@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Admin authorization" do
   scenario "admin accesses dashboard" do
     allow(ENV).to receive(:fetch).
-      with("ADMIN_GITHUB_HANDLES", "").
+      with("ADMIN_GITHUB_USERNAMES", "").
       and_return("admin_user,other_admin_user")
     stub_repos_requests(token)
     admin = create(:user, github_username: "admin_user")
@@ -16,7 +16,7 @@ feature "Admin authorization" do
 
   scenario "non-admin cannot access dashboard" do
     allow(ENV).to receive(:fetch).
-      with("ADMIN_GITHUB_HANDLES", "").
+      with("ADMIN_GITHUB_USERNAMES", "").
       and_return("admin_user,other_admin_user")
     stub_repos_requests(token)
     non_admin = create(:user, github_username: "not_admin_user")
