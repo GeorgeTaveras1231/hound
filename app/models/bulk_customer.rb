@@ -1,4 +1,6 @@
 class BulkCustomer < ActiveRecord::Base
+  include Administratable
+
   def self.unpaid_repos
     bulk_orgs = pluck(:org)
     Repo.
@@ -17,9 +19,5 @@ class BulkCustomer < ActiveRecord::Base
       count
 
     update(current_repos: repo_count)
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 end

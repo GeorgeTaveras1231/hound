@@ -2,6 +2,8 @@
 # Built by style guides.
 # Printed by Commenter.
 class Violation < ActiveRecord::Base
+  include Administratable
+
   belongs_to :file_review
 
   delegate :count, to: :messages, prefix: true
@@ -13,9 +15,5 @@ class Violation < ActiveRecord::Base
 
   def messages
     self[:messages].uniq
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 end

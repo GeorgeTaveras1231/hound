@@ -1,4 +1,6 @@
 class Build < ActiveRecord::Base
+  include Administratable
+
   belongs_to :repo
   belongs_to :user
   has_many :file_reviews, dependent: :destroy
@@ -20,10 +22,6 @@ class Build < ActiveRecord::Base
 
   def user_token
     (user && user.token) || Hound::GITHUB_TOKEN
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 
   private

@@ -1,4 +1,6 @@
 class Repo < ActiveRecord::Base
+  include Administratable
+
   has_many :builds
   has_many :memberships, dependent: :destroy
   belongs_to :owner
@@ -69,10 +71,6 @@ class Repo < ActiveRecord::Base
       joins(:file_review).
       where(file_reviews: { build_id: build_ids }).
       count
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 
   private

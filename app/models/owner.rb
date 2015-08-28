@@ -1,4 +1,6 @@
 class Owner < ActiveRecord::Base
+  include Administratable
+
   has_many :repos
   has_many :style_configs, dependent: :destroy
 
@@ -8,9 +10,5 @@ class Owner < ActiveRecord::Base
     owner.organization = organization
     owner.save!
     owner
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 end

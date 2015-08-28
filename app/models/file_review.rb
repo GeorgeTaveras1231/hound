@@ -1,4 +1,6 @@
 class FileReview < ActiveRecord::Base
+  include Administratable
+
   belongs_to :build
   has_many :violations
 
@@ -20,10 +22,6 @@ class FileReview < ActiveRecord::Base
 
   def running?
     !completed?
-  end
-
-  def to_s
-    "#{self.class} ##{id}"
   end
 
   private
