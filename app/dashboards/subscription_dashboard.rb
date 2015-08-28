@@ -1,19 +1,6 @@
 require "administrate/base_dashboard"
 
 class SubscriptionDashboard < Administrate::BaseDashboard
-  ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-    :user_id,
-    :repo_id,
-    :stripe_subscription_id,
-    :deleted_at,
-    :price,
-    :repo,
-    :user,
-  ]
-
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
@@ -33,19 +20,7 @@ class SubscriptionDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
   }
 
-  def attribute_types
-    ATTRIBUTE_TYPES
-  end
-
-  def table_attributes
-    ATTRIBUTES.first(4)
-  end
-
-  def show_page_attributes
-    ATTRIBUTES
-  end
-
-  def form_attributes
-    ATTRIBUTES - READ_ONLY_ATTRIBUTES
-  end
+  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
 end

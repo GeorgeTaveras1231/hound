@@ -1,24 +1,6 @@
 require "administrate/base_dashboard"
 
 class RepoDashboard < Administrate::BaseDashboard
-  ATTRIBUTES = [
-    :id,
-    :github_id,
-    :active,
-    :hook_id,
-    :full_github_name,
-    :created_at,
-    :updated_at,
-    :private,
-    :in_organization,
-    :owner_id,
-    :builds,
-    :memberships,
-    :owner,
-    :subscription,
-    :users,
-  ]
-
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
@@ -44,19 +26,7 @@ class RepoDashboard < Administrate::BaseDashboard
     users: Field::HasMany,
   }
 
-  def attribute_types
-    ATTRIBUTE_TYPES
-  end
-
-  def table_attributes
-    ATTRIBUTES.first(4)
-  end
-
-  def show_page_attributes
-    ATTRIBUTES
-  end
-
-  def form_attributes
-    ATTRIBUTES - READ_ONLY_ATTRIBUTES
-  end
+  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
 end

@@ -12,11 +12,5 @@ class DashboardManifest
     :violations,
   ]
 
-  def dashboards
-    DASHBOARDS
-  end
-
-  def root_dashboard
-    dashboards.first
-  end
+  ROOT_DASHBOARD = DASHBOARDS.first
 end

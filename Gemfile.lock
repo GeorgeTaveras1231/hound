@@ -46,7 +46,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.7)
-    administrate (0.0.7)
+    administrate (0.0.8)
       neat (~> 1.1)
       normalize-rails (~> 3.0)
       rails (~> 4.2)
@@ -340,7 +340,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (= 0.8.3)
-  administrate (~> 0.0.7)
+  administrate (~> 0.0.8)
   analytics-ruby (~> 2.0.0)
   angular_rails_csrf
   angularjs-rails

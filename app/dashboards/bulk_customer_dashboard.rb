@@ -1,9 +1,6 @@
 require "administrate/base_dashboard"
 
 class BulkCustomerDashboard < Administrate::BaseDashboard
-  ATTRIBUTES = [
-  ]
-
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
@@ -13,19 +10,7 @@ class BulkCustomerDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
   }
 
-  def attribute_types
-    ATTRIBUTE_TYPES
-  end
-
-  def table_attributes
-    ATTRIBUTES.first(4)
-  end
-
-  def show_page_attributes
-    ATTRIBUTES
-  end
-
-  def form_attributes
-    ATTRIBUTES - READ_ONLY_ATTRIBUTES
-  end
+  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
 end

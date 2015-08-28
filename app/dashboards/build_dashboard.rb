@@ -1,21 +1,6 @@
 require "administrate/base_dashboard"
 
 class BuildDashboard < Administrate::BaseDashboard
-  ATTRIBUTES = [
-    :id,
-    :violations_archive,
-    :repo_id,
-    :created_at,
-    :updated_at,
-    :uuid,
-    :pull_request_number,
-    :commit_sha,
-    :repo,
-    :user,
-    :file_reviews,
-    :violations,
-  ]
-
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
@@ -37,19 +22,7 @@ class BuildDashboard < Administrate::BaseDashboard
     violations: Field::HasMany,
   }
 
-  def attribute_types
-    ATTRIBUTE_TYPES
-  end
-
-  def table_attributes
-    ATTRIBUTES.first(4)
-  end
-
-  def show_page_attributes
-    ATTRIBUTES
-  end
-
-  def form_attributes
-    ATTRIBUTES - READ_ONLY_ATTRIBUTES
-  end
+  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
 end

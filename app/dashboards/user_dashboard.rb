@@ -1,22 +1,6 @@
 require "administrate/base_dashboard"
 
 class UserDashboard < Administrate::BaseDashboard
-  ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-    :github_username,
-    :remember_token,
-    :refreshing_repos,
-    :email_address,
-    :stripe_customer_id,
-    :token,
-    :memberships,
-    :repos,
-    :subscribed_repos,
-    :subscriptions,
-  ]
-
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
@@ -39,19 +23,7 @@ class UserDashboard < Administrate::BaseDashboard
     subscriptions: Field::HasMany,
   }
 
-  def attribute_types
-    ATTRIBUTE_TYPES
-  end
-
-  def table_attributes
-    ATTRIBUTES.first(4)
-  end
-
-  def show_page_attributes
-    ATTRIBUTES
-  end
-
-  def form_attributes
-    ATTRIBUTES - READ_ONLY_ATTRIBUTES
-  end
+  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
 end
