@@ -1,0 +1,14 @@
+app: &app
+  image: "gtaveras/hound"
+  volumes:
+    - .:/usr/src/app
+  working_dir: '/usr/src/app'
+  links:
+    - db
+
+db:
+  image: postgres
+  environment:
+    POSTGRES_USER: hound
+  expose:
+    - "5432"
