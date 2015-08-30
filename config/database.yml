@@ -1,4 +1,6 @@
 development: &default
+  username: hound
+  host: db
   adapter: postgresql
   encoding: unicode
   database: hound_development
